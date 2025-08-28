@@ -319,6 +319,8 @@ endif;
 if ( ! function_exists( 'bravada_set_featured_srcset_picture' ) ) :
 function bravada_set_featured_srcset_picture() {
 
+	if ( cryout_get_option( 'theme_fpost' ) == FALSE ) return;
+
 	global $post;
 	$options = cryout_get_option( array( 'theme_fpost', 'theme_fauto', 'theme_falign', 'theme_magazinelayout', 'theme_landingpage' ) );
 
@@ -378,6 +380,6 @@ function bravada_set_featured_srcset_picture() {
 	}
 } // bravada_set_featured_srcset_picture()
 endif;
-if ( cryout_get_option( 'theme_fpost' ) ) add_action( 'cryout_featured_hook', 'bravada_set_featured_srcset_picture' );
+add_action( 'cryout_featured_hook', 'bravada_set_featured_srcset_picture' );
 
 /* FIN */

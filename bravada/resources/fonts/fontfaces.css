@@ -1069,6 +1069,8 @@
 .socials a[href*="sourceforge.net"]::before, .socials a.sourceforge::before { content: "\e92c"; }
 .socials a[href*="snapchat.com"]::before, .socials a.snapchat::before { content: "\e92d"; }
 .socials a[href*="signal.org"]::before, .socials a.signal::before { content: "\e92f"; }
+/* 2025 */
+.socials a[href*="bsky.app"]::before, .socials a.bluesky::before { content: "\e930"; }
 
 .socials a[href*="duckduckgo.com"]::after, .socials a.duckduckgo::after { content: '\e801'; }
 .socials a[href*="aim.com"]::after, .socials a.aim::after { content: '\e802'; }
@@ -1220,6 +1222,8 @@
 .socials a[href*="sourceforge.net"]::after, .socials a.sourceforge::after { content: "\e92c"; }
 .socials a[href*="snapchat.com"]::after, .socials a.snapchat::after { content: "\e92d"; }
 .socials a[href*="signal.org"]::after, .socials a.signal::after { content: "\e92f"; }
+/* 2025 */
+.socials a[href*="bsky.app"]::after, .socials a.bluesky::after { content: "\e930"; }
 
 .socicon-duckduckgo::before { content: '\e801'; }
 .socicon-aim::before { content: '\e802'; }
@@ -1367,6 +1371,8 @@
 .socicon-sourceforge::before { content: "\e92c"; }
 .socicon-snapchat::before { content: "\e92d"; }
 .socicon-signal::before { content: "\e92f"; }
+/* 2025 */
+.socicon-bluesky::before { content: "\e930"; }
 
 /* Blocks font */
 @font-face {

@@ -152,6 +152,6 @@ function bravada_add_editor_styles() {
 	add_editor_style( add_query_arg( 'action', 'theme_editor_styles_output', admin_url( 'admin-ajax.php' ) ) );
 	add_action( 'wp_ajax_theme_editor_styles_output', 'bravada_editor_styles_output' );
 }//bravada_add_editor_styles
-bravada_add_editor_styles();
+add_action( 'init', 'bravada_add_editor_styles' );
 
 /* FIN */

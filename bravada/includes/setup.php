@@ -189,6 +189,11 @@ function bravada_setup() {
 	add_theme_support( 'wc-product-gallery-lightbox' );
 	add_theme_support( 'wc-product-gallery-slider' );
 
+	/**
+	* Normalizes tags widget font when needed
+	*/
+	if ( TRUE === cryout_get_option( 'theme_normalizetags' ) ) add_filter( 'wp_generate_tag_cloud', 'cryout_normalizetags' );
+
 } // bravada_setup()
 
 function bravada_gutenberg_editor_styles() {

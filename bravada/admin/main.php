@@ -6,17 +6,25 @@
  */
 
 // Theme particulars
-require_once( get_template_directory() . "/admin/defaults.php" );
-require_once( get_template_directory() . "/admin/options.php" );
 require_once( get_template_directory() . "/includes/tgmpa.php" );
 
 // Custom CSS Styles for customizer
 require_once( get_template_directory() . "/includes/custom-styles.php" );
 
-// load up theme options
-$cryout_theme_settings = apply_filters( 'bravada_theme_structure_array', $bravada_big );
-$cryout_theme_options = bravada_get_theme_options();
-$cryout_theme_defaults = bravada_get_option_defaults();
+function bravada_admin_init() {
+	global $bravada_big;
+	require_once( get_template_directory() . "/admin/defaults.php" );
+	require_once( get_template_directory() . "/admin/options.php" );
+
+	// load up theme internals
+	global $cryout_theme_settings;
+	global $cryout_theme_options;
+	global $cryout_theme_defaults;
+	$cryout_theme_settings = apply_filters( 'bravada_theme_structure_array', $bravada_big );
+	$cryout_theme_options = bravada_get_theme_options();
+	$cryout_theme_defaults = bravada_get_option_defaults();
+} // bravada_admin_init()
+add_action( 'after_setup_theme', 'bravada_admin_init', 2 );
 
 // Get the theme options and make sure defaults are used if no values are set
 //if ( ! function_exists( 'bravada_get_theme_options' ) ):

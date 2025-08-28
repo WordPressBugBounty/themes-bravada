@@ -123,6 +123,8 @@ function bravada_conditionals( $control ) {
 
 } // bravada_conditionals()
 
+function bravada_big_init() {
+global $bravada_big;
 $bravada_big = array(
 
 /************* general info ***************/
@@ -176,7 +178,7 @@ $bravada_big = array(
 ), // info_settings
 
 'panel_overrides' => array(
-	'background' => array(
+	/* 'background' => array(
         'title' => __( 'Background', 'cryout' ),
 		'desc' => __( 'Background Settings.', 'cryout' ),
 		'priority' => 50,
@@ -199,7 +201,7 @@ $bravada_big = array(
 		'section' => 'cryoutoverride-theme_siteidentity',
 		'replaces' => 'title_tagline',
 		'type' => 'section',
-	),
+	), */
 	'colors' => array(
 		'section' => 'section',
 		'replaces' => 'colors',
@@ -207,19 +209,24 @@ $bravada_big = array(
 	),
 
 ), // panel_overrides
+'priorities_overrides' => array(
+	'title_tagline' => '20', // default: 20
+	'header_image' => '22', // default: 60
+	'background_image' => '24', // default: 80
+), // priorities_overrides
 
 /************* panels *************/
 
 'panels' => array(
 
-	array('id'=>'theme_siteidentity', 'title'=>__('Site Identity','bravada'), 'callback'=>'', 'identifier'=>'cryoutoverride-' ),
-	array('id'=>'theme_layout_section', 'title'=>__('Layout','bravada'), 'callback'=>'' ),
-	array('id'=>'theme_header_section', 'title'=>__('Header','bravada'), 'callback'=>'' ),
-	array('id'=>'theme_landingpage', 'title'=>__('Landing Page','bravada'), 'callback'=>'' ),
-	array('id'=>'theme_general_section', 'title'=>__('General','bravada') , 'callback'=>'' ),
-	array('id'=>'theme_colors_section', 'title'=>__('Colors','bravada'), 'callback'=>'' ),
-	array('id'=>'theme_text_section', 'title'=>__('Typography','bravada'), 'callback'=>'' ),
-	array('id'=>'theme_post_section', 'title'=>__('Post Information','bravada') , 'callback'=>'' ),
+	//array('id'=>'theme_siteidentity', 'title'=>__('Site Identity','bravada'), 'callback'=>'', 'identifier'=>'cryoutoverride-' ),
+	array('id'=>'theme_layout_section', 'title'=>__('Layout','bravada'), 'callback'=>'', 'priority' => 30 ),
+	array('id'=>'theme_header_section', 'title'=>__('Header','bravada'), 'callback'=>'', 'priority' => 35 ),
+	array('id'=>'theme_landingpage', 'title'=>__('Landing Page','bravada'), 'callback'=>'', 'priority' => 40 ),
+	array('id'=>'theme_general_section', 'title'=>__('General','bravada') , 'callback'=>'', 'priority' => 45 ),
+	array('id'=>'theme_colors_section', 'title'=>__('Colors','bravada'), 'callback'=>'', 'priority' => 50 ),
+	array('id'=>'theme_text_section', 'title'=>__('Typography','bravada'), 'callback'=>'', 'priority' => 55 ),
+	array('id'=>'theme_post_section', 'title'=>__('Post Information','bravada') , 'callback'=>'', 'priority' => 60 ),
 
 ), // panels
 
@@ -231,17 +238,16 @@ $bravada_big = array(
 	array('id'=>'theme_generallayout', 'title'=>__('General Layout', 'bravada'), 'callback'=>'', 'sid'=>'theme_layout_section', 'priority'=>50 ),
 	array('id'=>'theme_otherlayout', 'title'=>__('Other Layouts', 'bravada'), 'callback'=>'', 'sid'=>'theme_layout_section', 'priority'=>60 ),
 	// header
-	//array('id'=>'theme_siteheader', 'title'=>__('Header','bravada'), 'callback'=>'', 'sid'=> '', 'priority'=>52 ),
 	array('id'=>'theme_headermenu', 'title'=>__('Menu','bravada'), 'callback'=>'', 'sid'=> 'theme_header_section', 'priority'=>10 ),
 	array('id'=>'theme_headercontent', 'title'=>__('Content','bravada'), 'callback'=>'', 'sid'=> 'theme_header_section', 'priority'=>12 ),
 	// landing page
-	array('id'=>'theme_lpgeneral', 'title'=>__('Settings','bravada'), 'callback'=>'', 'sid'=>'theme_landingpage', 'priority' => 10),
+	array('id'=>'theme_lpgeneral', 'title'=>__('General','bravada'), 'callback'=>'', 'sid'=>'theme_landingpage', 'priority' => 10),
 	array('id'=>'theme_lpslider', 'title'=>__('Slider','bravada'), 'callback'=>'', 'sid'=>'theme_landingpage', 'priority' => 20),
 	array('id'=>'theme_lpblocks1', 'title'=>__('Featured Icon Blocks','bravada'), 'callback'=>'', 'sid'=>'theme_landingpage', 'priority' => 30 ),
 	array('id'=>'theme_lpboxes1', 'title'=>__('Featured Boxes','bravada'), 'callback'=>'', 'sid'=>'theme_landingpage', 'priority' => 40),
 	array('id'=>'theme_lpboxes2', 'title'=>__('Featured Boxes 2','bravada'), 'callback'=>'', 'sid'=>'theme_landingpage', 'priority' => 50),
 	array('id'=>'theme_lptexts', 'title'=>__('Text Areas','bravada'), 'callback'=>'', 'sid'=>'theme_landingpage', 'priority' => 60),
-	array('id'=>'theme_lpfcontent', 'title'=>__('Featured Content','bravada'), 'callback'=>'', 'sid'=>'theme_landingpage', 'priority' => 70),
+	//array('id'=>'theme_lpfcontent', 'title'=>__('Featured Content','bravada'), 'callback'=>'', 'sid'=>'theme_landingpage', 'priority' => 70),
 	// text
 	array('id'=>'theme_fontfamily', 'title'=>__('General Font','bravada'), 'callback'=>'', 'sid'=> 'theme_text_section'),
 	array('id'=>'theme_fontheader', 'title'=>__('Header Fonts','bravada'), 'callback'=>'', 'sid'=> 'theme_text_section'),
@@ -411,6 +417,16 @@ $bravada_big = array(
 		'addon' => TRUE, // this option gets added to built-in WordPress section
 	'section' => 'title_tagline' ),
 	array(
+	'id' => 'theme_headervideohint',
+		'type' => 'notice',
+		'label' => '',
+		'desc' => __( 'Due to bandwidth considerations, header videos are only loaded on the front page for viewports that are at least 900 pixels wide and 500 pixels tall.<br>Additionally, most mobile browsers block autoplay of videos with sound.', 'bravada' ),
+		'input_attrs' => array( 'class' => '' ),
+		'priority' => 8,
+		'active_callback' => 'is_header_video_active',
+		'addon' => TRUE, // this option gets added to built-in WordPress section
+	'section' => 'header_image' ),
+	array(
 	'id' => 'theme_headerorbannerhint',
 		'type' => 'notice',
 		'label' => '',
@@ -426,7 +442,7 @@ $bravada_big = array(
 	'id' => 'theme_menustyle',
 		'type' => 'toggle',
 		'values' => array( 0, 1 ),
-		'label' => __('Fixed Menu','bravada'),
+		'label' => __('Sticky Menu','bravada'),
 		'desc' => "",
 	'section' => 'theme_headermenu' ),
 	array(
@@ -588,15 +604,15 @@ $bravada_big = array(
 		'labels' => array( __("Static Page", "bravada"), __("Posts", "bravada"), __("Disabled", "bravada") ),
 		'desc' => '',
 		'active_callback' => 'bravada_conditionals',
-	'section' => 'theme_lpfcontent' ),
+	'section' => 'theme_lpgeneral' ),
 	array(
 	'id' => 'theme_landingpage_fronthint',
 		'type' => 'notice',
 		'label' => '',
-		'input_attrs' => array( 'class' => 'notice' ),
+		'input_attrs' => array( 'class' => '' ),
 		'desc' => sprintf( __( "Select the front (static) page in WordPress' %s","bravada" ), "<a data-type='section' data-id='static_front_page' class='cryout-customizer-focus'><strong>" . __("Homepage Settings", "bravada") . " &raquo;</strong></a>" ),
 		'active_callback' => 'bravada_conditionals',
-	'section' => 'theme_lpfcontent' ),
+	'section' => 'theme_lpgeneral' ),
 	array(
 	'id' => 'theme_lpposts_more',
 		'type' => 'text',
@@ -604,6 +620,16 @@ $bravada_big = array(
 		'desc' => '',
 		'active_callback' => 'bravada_conditionals',
 	'section' => 'theme_lpfcontent' ),
+	// lp-related hint to WP's homepage panel
+	array(
+	'id' => 'theme_landingpage_wphint',
+		'type' => 'notice',
+		'label' => '',
+		'desc' => sprintf( __( 'Configure the theme\'s landing page functionality in the %s','bravada' ), '<a data-type="panel" data-id="cryout-theme_landingpage" class="cryout-customizer-focus"><strong>' . __('Landing Page options', 'bravada') . ' &raquo;</strong></a>' ),
+		'input_attrs' => array( 'class' => '' ),
+		'priority' => 55,
+		'addon' => TRUE, // this option gets added to built-in WordPress section
+	'section' => 'static_front_page' ),
 
 	// slider
 	array(
@@ -1306,7 +1332,7 @@ $bravada_big = array(
 	'id' => 'theme_fmenusize',
 		'type' => 'numberslider',
 		'label' => '',
-		'min' => 0.8, 'max' => 2.0, 'step' => 0.05, 'um' => 'em',
+		'min' => 0.8, 'max' => 3.0, 'step' => 0.05, 'um' => 'em',
 		'desc' => '',
 	'section' => 'theme_fontheader' ),
 	array(
@@ -2990,4 +3016,7 @@ $bravada_big = array(
 ksort( $bravada_big['block-icons'] );
 $bravada_big['block-icons'] = array_merge( array( 'no-icon' => '&nbsp;') , $bravada_big['block-icons'] );
 
+} // bravada_big_init()
+
+add_action( 'after_setup_theme', 'bravada_big_init' ); // init is too late for widgets_init
 // FIN

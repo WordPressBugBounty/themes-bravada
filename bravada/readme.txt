@@ -2,13 +2,13 @@
 
 Contributors: Cryout Creations
 Requires at least: 4.5
-Tested up to: 6.6
-Stable tag: 1.1.4
-Requires PHP: 5.6
+Tested up to: 6.8
+Stable tag: 1.2.0
+Requires PHP: 7.0
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.html
 
-Copyright 2020-24 Cryout Creations
+Copyright 2020-25 Cryout Creations
 https://www.cryoutcreations.eu/
 
 == Description ==
@@ -94,6 +94,27 @@ The rest of the bundled images are created by Cryout Creations and released with
 
 
 == Changelog ==
+
+= 1.2.0 =
+*Release date: 2025.08.28*
+
+* Major rewrite of all critical action and filter hooks to resolve the '_load_textdomain_just_in_time() was called incorrectly' notice introduced by WordPress 6.7. ***If you're using a child theme to apply complex overrides, these may need adjusting to account for the new order of things***
+* Added Bluesky social icon
+* Added hint about header video limitations to WordPress' Header Media customizer panel
+* Moved the landing page "Featured Content" option into the main Landing Page customizer panel
+* Rearranged WordPress' built-in site identity options for better consistency
+* Renamed "Fixed Menu" option to "Sticky Menu" for clarity
+* Changed all outgoing frontend links to be protocol agnostic and avoid warnings from automated quality check tools.
+* Fixed 'View all posts by' translation inconsistency in user-bio.php
+* Bumped required PHP version to 7.0
+* Updated to Cryout Framework 0.8.7:
+	* Added support to change built-in customizer panel priorities
+	* Added support to customize priority for theme customizer panels
+	* Added the Button customizer control (used for the personalities apply button)
+	* Added the Personality customizer control (for personalities selection)
+	* Merged 'hint' control as subtype of 'notice' control
+	* Fixed "About theme" customizer panel layout issues due WordPress' 6.7 accessibility changes
+	* Fixed theme indicator misplaced with WordPress' 6.7 accessibility changes
 
 = 1.1.4 =
 *Release date: 2024.10.03*

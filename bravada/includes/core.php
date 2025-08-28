@@ -394,7 +394,7 @@ function bravada_master_footer() {
 	do_action( 'cryout_footer_hook' );
 	echo '<div style="display:block; margin: 0.5em auto;">' . __( "Powered by", "bravada" ) .
 		'<a target="_blank" href="' . esc_html( $the_theme->get( 'ThemeURI' ) ) . '" title="';
-	echo 'Bravada WordPress Theme by ' . 'Cryout Creations"> ' . 'Bravada' .'</a> &amp; <a target="_blank" href="' . "http://wordpress.org/";
+	echo 'Bravada WordPress Theme by ' . 'Cryout Creations"> ' . 'Bravada' .'</a> &amp; <a target="_blank" href="' . "//wordpress.org/";
 	echo '" title="' . esc_attr__( "Semantic Personal Publishing Platform", "bravada") . '"> ' . sprintf( " %s", "WordPress" ) . '</a>.</div>';
 }
 
@@ -534,11 +534,6 @@ function cryout_burger_menu( $items, $args = array() ) {
 	return $items;
 } // cryout_burger_menu()
 endif;
-
-/**
- * Normalizes tags widget font when needed
- */
-if ( TRUE === cryout_get_option( 'theme_normalizetags' ) ) add_filter( 'wp_generate_tag_cloud', 'cryout_normalizetags' );
 
 /**
  * Adds preloader
